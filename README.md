@@ -1,12 +1,12 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=PS&fontSize=90" />
 
 
+<div align="center">
 
+[![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=gorchid)](https://solved.ac/gorchid/)  <img src="http://mazandi.herokuapp.com/api?handle=gorchid&theme=dark"/>
 
-[![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=gorchid)](https://solved.ac/gorchid/)
+</div>
 
-![mazandi profile](http://mazandi.herokuapp.com/api?handle=gorchid&theme=dark)
-<img src="http://mazandi.herokuapp.com/api?handle=gorchid&theme=dark"/>
 
 <br>
 
