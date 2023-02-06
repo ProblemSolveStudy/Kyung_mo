@@ -3,7 +3,7 @@
 
 <div align="center">
 
-[![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=gorchid)](https://solved.ac/gorchid/) <p></p>  <img src="http://mazandi.herokuapp.com/api?handle=gorchid&theme=dark"/>
+[![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=gorchid)](https://solved.ac/gorchid/) 　　  <img src="http://mazandi.herokuapp.com/api?handle=gorchid&theme=dark"/>
 
 </div>
 
@@ -39,6 +39,7 @@
 답지보고 푼 문제는 안볼 때 까지 반복한다
 </span> 
 
+<br/>
 <br/>
 
 
