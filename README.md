@@ -3,7 +3,7 @@
 
 <div align="center">
 
-[![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=gorchid)](https://solved.ac/gorchid/)  <img src="http://mazandi.herokuapp.com/api?handle=gorchid&theme=dark"/>
+[![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=gorchid)](https://solved.ac/gorchid/) <p></p>  <img src="http://mazandi.herokuapp.com/api?handle=gorchid&theme=dark"/>
 
 </div>
 
@@ -28,7 +28,7 @@
 
 -  🙆 : 답지보고 풀었음
 
-<br>
+<br/>
 
 
 
@@ -36,11 +36,10 @@
 
 
 <span style="color:#2D3748; background-color: #fff5b1; font-size:25px">
-<u>답지보고 푼 문제는 안볼 때 까지 반복한다</u>
+답지보고 푼 문제는 안볼 때 까지 반복한다
 </span> 
 
-
-<br>
+<br/>
 
 
 | 문제번호 | 성공여부 | d+1 성공여부 | d+2 성공 여부 | 문제점 |
