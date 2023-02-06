@@ -35,9 +35,9 @@
 <div align="center">
 
 
-<span style="color:#2D3748; background-color: #fff5b1; font-size:25px">
+<div style="color:#2D3748; background-color: #fff5b1; font-size:25px">
 답지보고 푼 문제는 안볼 때 까지 반복한다
-</span> 
+</div> 
 
 <br/>
 <br/>
