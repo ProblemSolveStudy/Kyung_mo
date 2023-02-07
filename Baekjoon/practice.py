@@ -272,3 +272,43 @@
 # profile("유재석")
 # profile("김태호")
 
+# stack = [0,1,2,3]
+
+# if stack:
+#     print(stack)
+
+# a = 0
+# def func():
+#     a = 0
+#     a += 1
+    
+# for i in range(10):
+#     func()
+
+# print(a)
+
+# def add(a, b):
+#     return a+b
+
+# list1 = [1,2,3,4,5]
+# list2 = [6,7,8,9,10]
+
+# print(add(list1,list2))
+# n=3
+# m=4
+
+# array = [[0] * m for _ in range(n)]
+# array[1][0] = 5 
+# print(array)
+
+# result = eval("(3+5)*7")
+# print(result)
+
+# from itertools import product
+
+# data = ['a','b','c']
+
+# result = list(product(data, repeat=2))
+
+# print(result)
+

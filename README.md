@@ -5,8 +5,12 @@
 
 [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=gorchid)](https://solved.ac/gorchid/) 　　  <img src="http://mazandi.herokuapp.com/api?handle=gorchid&theme=dark"/>
 
+<a href="https://www.notion.so/a25aafd45adc42649f872322472c9511"> 파이썬 코테용 함수 정리 </a>
+
+<br>
 </div>
 
+<hr>
 
 <br>
 
@@ -70,7 +74,7 @@
 | 1406 (LinkedList) 23/02/07 | 🙆 | 🙆‍♂️ |  |  |
 | 1874 스택 23/02/02 | 🙆 | 🙆 | 🙆‍♂️ |  |
 | 10799 스택 23/02/02 | 🙆 |  |  |  |
-| 2493 스택 23/02/03 존나어렵네 | 🙆 |  |  |  |
+| 2493 스택 23/02/03 | 🙆 |  |  |  |
 | 10845 큐 구현 23/02/03 | 🙆‍♂️ |  |  |  |
 | 18258 큐 구현 23/02/03 | 🙆‍♂️ |  |  |  |
 | 2164 큐 23/02/03 | 🙆‍♂️ |  |  |  |
