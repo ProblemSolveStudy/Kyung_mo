@@ -21,5 +21,6 @@ for i in range(n):
             if not stack:
                 stack.append([tower[i], i])
                 break
-                
+
+# 리스트 혹은 튜플앞에 * 언패킹!          
 print(*res)
