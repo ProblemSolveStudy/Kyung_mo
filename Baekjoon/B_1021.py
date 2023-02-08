@@ -3,15 +3,15 @@ from collections import deque
 
 # 값을 뽑아내는 것은 popleft()밖에 없음
 
-n, m = map(int, sys.stdin.readline().split())
+n,m = map(int,sys.stdin.readline().split())
+command = list(map(int, sys.stdin.readline().split()))
 deq = deque([i for i in range(1, n+1)])
-cmd = list(map(int, sys.stdin.readline().split()))
+
 cnt = 0
 
-
-for i in cmd:
+for i in command:
     while True:
-        if i == deq[0]:
+        if deq[0] == i:
             deq.popleft()
             break
         else:
@@ -23,4 +23,3 @@ for i in cmd:
                 cnt += 1
 
 print(cnt)
-
