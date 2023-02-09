@@ -8,6 +8,20 @@ n,k = map(int, sys.stdin.readline().split())
 
 cnt =0
 
+# 내 풀이
+
+# while n!=1:
+#     if n%k == 0:
+#         n //= k
+#         cnt+=1
+#     else:
+#         n-=1
+#         cnt+=1
+
+# print(cnt)
+
+
+
 while True:
     target = (n // k) * k # N이 K로 나누어 떨어지는 수가 될 때 까지 빼기
     cnt += (n-target)
