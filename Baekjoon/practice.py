@@ -312,3 +312,21 @@
 
 # print(result)
 
+# from collections import deque
+
+# deq = deque()
+
+# for i in range(10):
+#     deq.append(i)
+
+# print(deq[0])
+
+import heapq
+
+heap = []
+values = [1,5,3,2,4,7,6]
+
+for value in values:
+    heapq.heappush(heap, value)
+
+print(heap)
