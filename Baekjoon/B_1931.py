@@ -7,12 +7,12 @@ mr = []
 
 # 각 회의의 정보를 입력과 동시에 list에 넣어줌
 # [[1, 4], [3, 5], [0, 6], [5, 7], [3, 8], [5, 9], [6, 10], [8, 11], [8, 12], [2, 13], [12, 14]]
-for _ in range(n):
+for _ in range(n): # O(n)
     mr.append(list(map(int, sys.stdin.readline().rstrip().split())))
 
 # 가장 먼저 끝나는 회의순으로 mr list를 정렬함
 # [[1, 4], [3, 5], [0, 6], [5, 7], [3, 8], [5, 9], [6, 10], [8, 11], [8, 12], [2, 13], [12, 14]]
-mr.sort(key=lambda x: (x[1], x[0]))
+mr.sort(key=lambda x: (x[1], x[0])) # O(nlogn)
 
 # 최대 개수 cnt
 cnt = 0
@@ -25,3 +25,5 @@ for i in mr:
         finish = i[1]
 
 print(cnt)
+
+# O(nlogn)인건가? ㅇㅅㅇ;;;;;;
