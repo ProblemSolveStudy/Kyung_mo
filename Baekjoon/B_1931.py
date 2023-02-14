@@ -3,7 +3,6 @@
 import sys
 
 n = int(sys.stdin.readline()) # 회의의 수
-
 mr = []
 
 # 각 회의의 정보를 입력과 동시에 list에 넣어줌
@@ -25,9 +24,4 @@ for i in mr:
         cnt += 1
         finish = i[1]
 
-
 print(cnt)
-
-# print(mr)
-
-
