@@ -4,9 +4,23 @@ import sys
 
 # 로프들을 이용해 들 수 있는 최대 중량 구하기
 
+# n = int(sys.stdin.readline())
+# rope = []
+# for _ in range(n):
+#     rope.append(int(sys.stdin.readline().rstrip()))
+
+# rope.sort(reverse=True)
+# result = []
+
+# for i in range(n):
+#     result.append(rope[i] * (i+1))
+
+# print(max(result))
+
 n = int(sys.stdin.readline())
+
 rope = []
-for _ in range(n):
+for i in range(n):
     rope.append(int(sys.stdin.readline().rstrip()))
 
 rope.sort(reverse=True)
