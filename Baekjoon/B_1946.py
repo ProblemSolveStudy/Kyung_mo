@@ -11,25 +11,25 @@ t = int(sys.stdin.readline())
 # manSum.sort()
 
 
-for i in range(t):
-    man = []
-    n = int(sys.stdin.readline())
-    result = 1
-    for j in range(n):
-        score = list(map(int, sys.stdin.readline().split()))
-        man.append(score)
+# for i in range(t):
+#     man = []
+#     n = int(sys.stdin.readline())
+#     result = 1
+#     for j in range(n):
+#         score = list(map(int, sys.stdin.readline().split()))
+#         man.append(score)
     
     
-    man.sort(key=lambda x: x[0])
+#     man.sort(key=lambda x: x[0])
 
-    target = man[0][1]
-    for k in range(1, n):
-        if target > man[k][1]:
-            result += 1
-            target = man[k][1]
+#     target = man[0][1]
+#     for k in range(1, n):
+#         if target > man[k][1]:
+#             result += 1
+#             target = man[k][1]
 
 
-    print(result)
+#     print(result)
     
     
 
@@ -40,3 +40,21 @@ for i in range(t):
 # [[7, 3], [6, 1], [5, 7], [4, 2], [3, 6], [2, 5], [1, 4]]
 # 10        7       12      6       9       7       5
 
+
+for i in range(t):
+    app =[]
+    n = int(sys.stdin.readline())
+    cnt=1
+    for j in range(n):
+        app.append(list(map(int, sys.stdin.readline().rstrip().split())))
+    
+    app.sort()
+
+    target=app[0][1]
+
+    for k in range(1,n):
+        if target > app[k][1]:
+            cnt+=1
+            target = app[k][1]
+    
+    print(cnt)
