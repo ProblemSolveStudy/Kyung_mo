@@ -41,20 +41,35 @@ t = int(sys.stdin.readline())
 # 10        7       12      6       9       7       5
 
 
+# for i in range(t):
+#     app =[]
+#     n = int(sys.stdin.readline())
+#     cnt=1
+#     for j in range(n):
+#         app.append(list(map(int, sys.stdin.readline().rstrip().split())))
+    
+#     app.sort()
+
+#     target=app[0][1]
+
+#     for k in range(1,n):
+#         if target > app[k][1]:
+#             cnt+=1
+#             target = app[k][1]
+    
+#     print(cnt)
+
 for i in range(t):
-    app =[]
     n = int(sys.stdin.readline())
+    app=[list(map(int, sys.stdin.readline().split())) for _ in range(n)]
+
+    app.sort(key=lambda x:x[0])
     cnt=1
-    for j in range(n):
-        app.append(list(map(int, sys.stdin.readline().rstrip().split())))
-    
-    app.sort()
+    target = app[0][1]
 
-    target=app[0][1]
-
-    for k in range(1,n):
+    for k in range(1, n):
         if target > app[k][1]:
-            cnt+=1
+            cnt += 1
             target = app[k][1]
-    
+
     print(cnt)
