@@ -5,14 +5,15 @@ import sys
 
 input = sys.stdin.readline
 
-n = int(input())
 positive, negative = [], []
 
-result =0
-for _ in range(n):
+result = 0
+
+n = int(input())
+for i in range(n):
     num = int(input())
 
-    if num>1:
+    if num > 1:
         positive.append(num)
     elif num <= 0:
         negative.append(num)
@@ -35,3 +36,38 @@ for i in range(0, len(negative), 2):
         result += negative[i] * negative[i+1]
 
 print(result)
+
+# import sys
+
+# input = sys.stdin.readline
+
+# n = int(input())
+# positive, negative = [], []
+
+# result =0
+# for _ in range(n):
+#     num = int(input())
+
+#     if num>1:
+#         positive.append(num)
+#     elif num <= 0:
+#         negative.append(num)
+#     else:
+#         result += num
+
+# positive.sort(reverse=True)
+# negative.sort()
+
+# for i in range(0, len(positive), 2):
+#     if i+1 >= len(positive):
+#         result += positive[i]
+#     else:
+#         result += positive[i] * positive[i+1]
+
+# for i in range(0, len(negative), 2):
+#     if i+1 >= len(negative):
+#         result += negative[i]
+#     else:
+#         result += negative[i] * negative[i+1]
+
+# print(result)
