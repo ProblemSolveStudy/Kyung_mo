@@ -1,23 +1,24 @@
 # 중첩 덧셈연산
+# 빨리끝나는 사람 순으로 세우는 것이 최소값
 # 40ms
 # O(n log n)
-# import sys
+import sys
 
-# n = int(sys.stdin.readline())
+n = int(sys.stdin.readline())
 
-# time = list(map(int, sys.stdin.readline().rstrip().split()))
+time = list(map(int, sys.stdin.readline().rstrip().split()))
 
-# time.sort() 
+time.sort() 
 
-# result = 0
-# acc_result = 0
+result = 0
+acc_result = 0
 
-# # O(n)
-# for i in time:
-#     acc_result += i
-#     result += acc_result
+# O(n)
+for i in time:
+    acc_result += i
+    result += acc_result
 
-# print(result)
+print(result)
 
 
 # 슬라이싱 이용한 풀이방법
