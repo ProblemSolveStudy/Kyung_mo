@@ -5,7 +5,7 @@
 
 [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=gorchid)](https://solved.ac/gorchid/) 　　  <img src="http://mazandi.herokuapp.com/api?handle=gorchid&theme=dark"/>
 
-<a href="https://www.notion.so/a25aafd45adc42649f872322472c9511"> 파이썬 코테용 함수 정리 </a>
+<a href="https://pentagonal-sapphire-668.notion.site/a25aafd45adc42649f872322472c9511"> 파이썬 코테용 함수 정리 </a>
 
 <br>
 </div>
