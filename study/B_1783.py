@@ -23,10 +23,10 @@ cnt = 1
 
 if n==1:
     print(cnt)
-elif n==2:
+elif n==2: # column이 아주 많을 경우
     print(min(4, (m+1)//2))
 elif n>=3:
     if m>=7:
-        print(m-2)
+        print(m-2) # 4 + m - 6
     else:
         print(min(4, m))
