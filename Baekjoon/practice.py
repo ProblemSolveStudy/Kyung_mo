@@ -321,12 +321,18 @@
 
 # print(deq[0])
 
-import heapq
+# import heapq
 
-heap = []
-values = [1,5,3,2,4,7,6]
+# heap = []
+# values = [1,5,3,2,4,7,6]
 
-for value in values:
-    heapq.heappush(heap, value)
+# for value in values:
+#     heapq.heappush(heap, value)
 
-print(heap)
+# print(heap)
+
+from collections import deque
+
+queue = deque([1])
+
+print(queue)
