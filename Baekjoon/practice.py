@@ -331,8 +331,24 @@
 
 # print(heap)
 
+# from collections import deque
+
+# queue = deque([1])
+
+# print(queue)
+
+# n=4
+# m=6
+# graph = [[0] * m for _ in range(n)]
+
 from collections import deque
+import sys
+# queue = deque([(10,1)])
 
-queue = deque([1])
 
-print(queue)
+# y,x = queue.popleft()
+# print(y,x)
+n,m = map(int, sys.stdin.readline().split())
+arr = [list(map(int, sys.stdin.readline().rstrip())) for _ in range(n)]
+
+print(arr)
