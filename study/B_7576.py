@@ -1,5 +1,6 @@
 # 전부 익어있다면 0
 # 전부 익을 수 없다면 -1
+# 시간 복잡도 O(n^3)
 
 import sys
 from collections import deque
@@ -33,10 +34,12 @@ def bfs(lst): # 예제 3으로 보면 lst안에 값으로 [0,0], [3,5]가 들어
                     graph[nx][ny] = graph[x][y] + 1
                     queue.append((nx, ny))
 
-    if any(0 in l for l in graph) or all(0 in l for l in graph): # 만약 graph안에 0이 하나라도 있거나
+        # 만약 graph안에 0이 하나라도 있거나
         # 전부 0일 경우엔 -1반환
+    if any(0 in l for l in graph) or all(0 in l for l in graph): 
         return -1
-    return max(map(max, graph)) - 1 # 그래프 내에서 한칸 이동시마다 +1을 해주기 때문에
+    # 그래프 내에서 한칸 이동시마다 +1을 해주기 때문에
+    return max(map(max, graph)) - 1 
     # 그래프에서 가장 max값을 반환
 
 tmt = []
@@ -49,3 +52,36 @@ for i in range(n):
            tmt.append([i,j])
         
 print(bfs(tmt))
+
+
+# 답지 버전
+# 시간 복잡도 O(n^2)
+answer_m, answer_n = map(int, sys.stdin.readline().split())
+answer_graph = [list(map(int, sys.stdin.readline().rstrip().split())) for _ in range(answer_n)]
+answer_queue = deque([])
+
+res = 0
+
+for i in range(answer_n):
+    for j in range(answer_m):
+        if answer_graph[i][j] == 1:
+            answer_queue.append([i,j])
+
+def bfs():
+    while answer_queue:
+        x,y = answer_queue.popleft()
+        for i in range(4):
+            nx, ny = x+dx[i] , y+dy[i]
+            if 0 <= nx < answer_n and 0<=ny<answer_m and answer_graph[nx][ny] == 0:
+                answer_graph[nx][ny] = answer_graph[x][y] + 1
+                answer_queue.append((nx, ny))
+
+bfs()
+for i in answer_graph:
+    for j in i:
+        if j == 0:
+            print(-1)
+            exit(0)
+    
+    res = max(res, max(i))
+print(res - 1)
