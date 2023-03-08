@@ -1,6 +1,8 @@
 # 전부 익어있다면 0
 # 전부 익을 수 없다면 -1
 # 시간 복잡도 O(n^3)
+# 메모리 154836KB, 시간 1608ms
+
 
 import sys
 from collections import deque
@@ -56,9 +58,13 @@ print(bfs(tmt))
 
 # 답지 버전
 # 시간 복잡도 O(n^2)
+# 메모리 98528 KB, 시간 1400ms
 answer_m, answer_n = map(int, sys.stdin.readline().split())
 answer_graph = [list(map(int, sys.stdin.readline().rstrip().split())) for _ in range(answer_n)]
 answer_queue = deque([])
+
+dx = [-1, 1, 0 ,0] # 움직일 수 있는 방향
+dy = [0, 0, -1, 1]
 
 res = 0
 
