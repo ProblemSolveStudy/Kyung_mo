@@ -1,7 +1,12 @@
 import sys, copy
 from collections import deque
+n = int(sys.stdin.readline())
+graph = [list(map(int, sys.stdin.readline().rstrip().split())) for _ in range(n)]
+result = []
+dx, dy = [-1, 1, 0 ,0], [0, 0, -1, 1]
 
-def bfs(graph,x,y,depth):
+
+def bfs(graph, x, y, depth):
     if graph[x][y] <= depth:
         return False
     
@@ -11,30 +16,23 @@ def bfs(graph,x,y,depth):
     while queue:
         x,y = queue.popleft()
         for i in range(4):
-            nx,ny = x+dx[i], y+dy[i]
+            nx = x + dx[i]
+            ny = y + dy[i]
 
-            if nx < 0 or nx>=n or ny < 0 or ny>=n:
-                continue
-            
-            if graph[nx][ny] > depth:
+            if 0<= nx < n and 0<= ny < n and graph[nx][ny] > depth:
                 graph[nx][ny] = 0
-                queue.append((nx,ny))
+                queue.append((nx, ny))
+    
     return True
 
-input = sys.stdin.readline
-
-n = int(input())
-graph = [list(map(int, input().rstrip().split())) for _ in range(n)]
-dx,dy = [-1,1,0,0], [0,0,-1,1]
-result = []
 for depth in range(101):
-    cnt=0
     g = copy.deepcopy(graph)
+    cnt = 0
     for i in range(n):
         for j in range(n):
-            if bfs(g,i,j,depth):
-                cnt+=1
-                
+            if bfs(g, i, j, depth):
+                cnt += 1
+    
     result.append(cnt)
 
 print(max(result))
