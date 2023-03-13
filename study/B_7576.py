@@ -63,7 +63,7 @@ answer_m, answer_n = map(int, sys.stdin.readline().split())
 answer_graph = [list(map(int, sys.stdin.readline().rstrip().split())) for _ in range(answer_n)]
 answer_queue = deque([])
 
-dx = [-1, 1, 0 ,0] # 움직일 수 있는 방향
+dx = [-1, 1, 0 ,0]
 dy = [0, 0, -1, 1]
 
 res = 0
