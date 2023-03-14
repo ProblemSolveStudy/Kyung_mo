@@ -1,17 +1,21 @@
-import sys
 from collections import deque
+import sys
+
 n,k = map(int, sys.stdin.readline().split())
-graph = [0] * (k+1)
-visited = [0] * 100001
+max = 100000
+visited = [0] * (max + 1)
+
 def bfs(start):
-    queue = deque([start])
-    while queue:
-        x = queue.popleft()
+    q = deque([start])
+    visited[start] = 1
+    while q:
+        x = q.popleft()
         if x == k:
-            return visited[x]
+            return visited[x] - 1
         for nx in (x-1, x+1, 2*x):
-            if 0<=nx<=100000 and not visited[nx]:
+            if 0<=nx<max and not visited[nx]:
                 visited[nx] = visited[x] + 1
-                queue.append(nx)
+                q.append(nx)
 
 print(bfs(n))
+            
