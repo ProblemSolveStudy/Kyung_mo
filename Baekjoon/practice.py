@@ -341,14 +341,19 @@
 # m=6
 # graph = [[0] * m for _ in range(n)]
 
-from collections import deque
-import sys
-# queue = deque([(10,1)])
+# from collections import deque
+# import sys
+# # queue = deque([(10,1)])
 
 
-# y,x = queue.popleft()
-# print(y,x)
-n,m = map(int, sys.stdin.readline().split())
-arr = [list(map(int, sys.stdin.readline().rstrip())) for _ in range(n)]
+# # y,x = queue.popleft()
+# # print(y,x)
+# n,m = map(int, sys.stdin.readline().split())
+# arr = [list(map(int, sys.stdin.readline().rstrip())) for _ in range(n)]
 
-print(arr)
+# print(arr)
+
+# i=0
+# while True:
+#     i += 1
+#     print(i,end='')
