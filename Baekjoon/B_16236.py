@@ -17,36 +17,62 @@ n = int(sys.stdin.readline())
 graph = [list(map(int, sys.stdin.readline().rstrip().split())) for _ in range(n)]
 dx, dy = [-1, 1, 0 , 0], [0, 0, -1, 1]
 start = 9
+shark_size = 2
+shark_now_eat = 0
+x,y = 0, 0
 
-def bfs(x, y):
-    shark_size = 2
-    shark_now_eat = 0
-    cnt = 0
-    queue = deque([x,y])
+for i in range(n):
+    for j in range(n):
+        if graph[i][j] == 9:
+            x,y = i, j
+            graph[i][j] = 0
+
+def bfs(x,y):
+    queue = deque([(x,y)])
+    visited = [[-1] * n for _ in range(n)]
+    visited[x][y] = 0
     while queue:
         x,y = queue.popleft()
         for i in range(4):
             nx = x + dx[i]
             ny = y + dy[i]
-            if graph[nx][ny] > shark_size: # 아기상어보다 크면 넘어가;;;
-                continue
-            if nx < 0 or nx >= n or ny < 0 or ny >= n: # 그래프 넘어가면 넘어가 ;;
-                continue
-            if graph[nx][ny] < shark_size: # 먹을 수 있는애면 먹어!
-                shark_now_eat += 1
-                graph[nx][ny] = 0
-                queue.append((nx, ny))
-                cnt += 1
-            elif graph[nx][ny] == shark_size:
-                queue.append((nx, ny))
-                cnt += 1
+            if 0<=nx<n and 0<=ny<n:
+                if shark_size >= graph[nx][ny] and visited[nx][ny] == -1:
+                    visited[nx][ny] = visited[x][y] + 1
+                    queue.append((nx, ny))
+    return visited
 
-    return True
+def solve(visited):
+    x,y = 0,0
+    min_distance = 1e9
+    for i in range(n):
+        for j in range(n):
+            if visited[i][j] != -1 and 1<=graph[i][j] < shark_size:
+                if visited[i][j] < min_distance:
+                    min_distance = visited[i][j]
+                    x,y = i,j
+    
+    if min_distance == 1e9:
+        return False
+    else:
+        return x,y,min_distance
                 
 
+answer = 0
+food = 0
 
+while True:
+    result = solve(bfs(x,y))
 
-for i in range(n):
-    for j in range(n):
-        if graph[i][j] == start:
-            bfs()
+    if not result:
+        print(answer)
+        break
+    else:
+        x,y = result[0], result[1]
+        answer += result[2]
+        graph[x][y] = 0
+        food += 1
+
+    if food >= shark_size:
+        shark_size += 1
+        food = 0
