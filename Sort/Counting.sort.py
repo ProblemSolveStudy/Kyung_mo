@@ -8,4 +8,4 @@ print(count)
 for i in range(len(count)):
     for j in range(count[i]):
         print(i, end=' ')
-        
+                                                    
