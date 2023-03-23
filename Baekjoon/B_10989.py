@@ -1,12 +1,14 @@
+# 메모리제한이 8MB이기 때문에 최소한으로 줄여야만 한다
+
 import sys
 
 n = int(sys.stdin.readline())
-numList = [0] * 10001
+count = [0] * 10001
 
 for _ in range(n):
-    numList[int(sys.stdin.readline())] += 1
+    a = int(sys.stdin.readline())
+    count[a] += 1
 
-for i in range(10001):
-    if numList[i] != 0:
-        for j in range(numList[i]):
-            print(i)
+for i in range(len(count)):
+    for j in range(count[i]):
+        print(i)
