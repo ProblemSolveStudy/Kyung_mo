@@ -1,12 +1,11 @@
 import sys
-
 n = int(sys.stdin.readline())
-arr = list(map(int, sys.stdin.readline().rstrip().split()))
+arr = list(map(int, sys.stdin.readline().split()))
 a = list(set(arr))
 a.sort()
-dic = {}
+dict = {}
 for i in range(len(a)):
-    dic[a[i]] = i
+    dict[a[i]] = i
 
 for i in arr:
-    print(dic[i], end=' ')
+    print(dict[i], end=' ')
