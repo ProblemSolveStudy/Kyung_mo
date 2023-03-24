@@ -1,44 +1,24 @@
 import sys
+input = sys.stdin.readline
 
-n = int(sys.stdin.readline())
-arr = list(map(int, sys.stdin.readline().split()))
-m = int(sys.stdin.readline())
-arr.sort()
-target_arr = list(map(int, sys.stdin.readline().split()))
+N = int(input())
+n_arr = sorted(list(map(int, input().split())))
+M = int(input())
+m_arr = list(map(int, input().split()))
 
-# def binaray_search(array, target, start, end):
-#     if start > end :
-#         return None
-#     mid = (start + end) // 2
-#     if array[mid] == target:
-#         return 1
-#     elif array[mid] > target:
-#         return binaray_search(array, target, start, mid-1)
-#     else:
-#         return binaray_search(array, target, mid+1, end)
+def binary_search(arr, target, start, end):
+    if start > end:
+        return False
+    mid = (start + end) // 2
+    if arr[mid] == target:
+        return True
+    elif arr[mid] > target:
+        return binary_search(arr, target, start, mid-1)
+    else:
+        return binary_search(arr, target, mid+1, end)
 
-# start = 0
-# end = n-1
-# for i in target_arr:
-#     result = binaray_search(arr, i, start, end)
-#     if result == None:
-#         print(0)
-#     else:
-#         print(1)
-
-def binaray_search(array, target, start, end):
-    while start<=end:
-        mid = (start + end) // 2
-        if array[mid] == target:
-            return True
-        elif array[mid] > target:
-            end = mid - 1
-        else:
-            start = mid + 1
-    return False
-
-for i in target_arr:
-    result = binaray_search(arr, i, start=0, end=n-1)
+for target in m_arr:
+    result = binary_search(n_arr, target, 0, N-1)
     if result:
         print(1)
     else:
