@@ -22,7 +22,34 @@ while (start<= end): # 최적의 해를 찾기 위한 조건
     if total < c: # c보다 작으니 mid값을 줄여서 더 짧은범위를 탐색하게 할 것
         end = mid - 1
     else: # c보다 많이 찾았으니 result에 우선 mid값 넣고, 최적의 해를 찾기 위해서 start값 갱신
+        # 최대 mid값
         result = mid
         start = mid + 1
 
 print(result)
+
+# import sys
+# input = sys.stdin.readline
+
+# n,c = map(int, input().split())
+# arr = sorted([int(input()) for _ in range(n)])
+
+# start = 0
+# end = max(arr)
+
+# while start <= end:
+#     current = arr[0]
+#     total = 1
+#     mid = (start + end) // 2
+
+#     for i in range(1, len(arr)):
+#         if arr[i] >= current + mid:
+#             total += 1
+#             current = arr[i]
+    
+#     if total < c:
+#         end = mid - 1
+#     else:
+#         result = mid
+#         start = mid + 1
+# print(result)
