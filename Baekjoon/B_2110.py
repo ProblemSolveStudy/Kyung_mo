@@ -26,7 +26,7 @@ while (start<= end): # 최적의 해를 찾기 위한 조건
         result = mid
         start = mid + 1
 
-print(result)
+# print(result)
 
 # import sys
 # input = sys.stdin.readline
@@ -53,3 +53,4 @@ print(result)
 #         result = mid
 #         start = mid + 1
 # print(result)
+
