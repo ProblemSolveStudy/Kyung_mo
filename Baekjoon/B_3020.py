@@ -11,8 +11,22 @@ lines = [0] * h
 for i in range(n):
     high = int(sys.stdin.readline().rstrip())
 
-    if i%2 == 0: # 석순
+    if i%2 == 0: # 종유석
         lines[h-high] += 1
+    else:
+        lines[high] += 1
+
+
+def binary_search(arr, target):
+    start = 0
+    end = len(arr) - 1
+    while start <= end:
+        mid = (start + end) // 2
+        if arr[mid] <= target:
+            start = mid + 1
+        else:
+            end = mid - 1
+            
 
 
 # start = 0
