@@ -1,29 +1,34 @@
-# 일단 주어지는 입력의 수가 1천만이다.
-# 게다가 시간제한은 1초기 때문에 O(n)이하의 시간복잡도로 문제를 풀어야 한다.
+# 상근이가 몇개의 카드를 가지고 잇느냐! (비교대상의 카드들 중에서)
 import sys
+input = sys.stdin.readline
 
-N = int(sys.stdin.readline())
-n_arr = sorted(list(map(int, sys.stdin.readline().split())))
-M = int(sys.stdin.readline())
-m_arr = list(map(int, sys.stdin.readline().split()))
+_ = int(input())
+# 상근이꺼
+n = sorted(list(map(int, input().split())))
+_ = int(input())
+# 비교대상
+m = list(map(int, input().split()))
 
 cnt = {}
-for card in n_arr:
+for card in n:
     if card in cnt:
         cnt[card] += 1
     else:
         cnt[card] = 1
 
 def binary_search(arr, target, start, end):
-    if start > end:
-        return 0
-    mid = (start + end) // 2
-    if arr[mid] == target:
-        return cnt.get(target)
-    if arr[mid] > target:
-        return binary_search(arr, target, start, mid-1)
-    else:
-        return binary_search(arr, target, mid+1, end)
+    while start <= end:
+        mid = (start+end) // 2
 
-for target in m_arr:
-    print(binary_search(n_arr, target, 0, N-1), end=' ')
+        if arr[mid] == target:
+            return cnt.get(target)
+        if arr[mid] > target:
+            end = mid - 1
+        else:
+            start = mid + 1
+    return 0
+
+# 비교대상의 카드들 중에서
+for target in m:
+    # 상근이의 카드들 n중 target(비교대상의 카드 한장)이 있나없나 찾기위해 이분탐색을 진행한다.
+    print(binary_search(n, target, 0, len(n)-1), end=' ')
