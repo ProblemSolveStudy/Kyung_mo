@@ -14,31 +14,32 @@
 # 20000 ^ 3 = 80억 (80초)
 # 즉 O(log n)의 시간복잡도를 가져야만 한다.
 
-def binary_search(target):
-    start = 0
-    end = len(b)-1
-    total = 0
-    while start <= end:
-        mid = (start + end) // 2
-        if b[mid] < target:
-            start = mid + 1
-            total = mid
-        else:
-            end = mid - 1
-    return total + 1
+# a가 b보다 큰 쌍의 개수 찾기
 
 import sys
 input = sys.stdin.readline
 
-for _ in range(int(input())):
-    _,_ = map(int, input().split())
-    # 1 1 3 7 8
-    a = sorted(list(map(int, input().split())))
-    # 1 3 6
-    b = sorted(list(map(int, input().split())))
+def binary_search(target):
+    start = 0
+    end = len(b)-1
     result = 0
-    for x in a:
-        if b[0] < x:
-            t = binary_search(x)
-            result += t
-    print(result)
+    
+    while start <= end:
+        mid = (start + end) // 2
+        if b[mid] < target:
+            result = mid
+            start = mid + 1
+        else:
+            end = mid - 1
+    return result
+
+
+for _ in range(int(input())):
+    _,_ = map(int, input().split()) # 사용하지 않는 (N,B)
+    a = sorted(list(map(int, input().split()))) # 정렬하면서 값 받아오기
+    b = sorted(list(map(int, input().split()))) # 정렬하면서 값 받아오기
+    total = 0 # pair의 개수 총합
+    for x in a: # a가 b보다 큰 쌍의 개수 찾기 이므로 target은 a의 값 x
+        if x > b[0]: # x의 값이 b[0] (정렬되어있으므로, 가장 작은 값) 보다 작다면 굳이 이분탐색을 할 필요가 없음
+            total += binary_search(x) + 1 # 이분탐색 시작 (이분탐색 시 return값은 index값 그러므로 +1을 해줘야 target이 들어갈 index값의 결과가 나옴 )
+    print(total)
