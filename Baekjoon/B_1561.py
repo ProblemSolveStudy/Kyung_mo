@@ -1,44 +1,37 @@
-# mid = 평균적으로 아이들을 전부 태울 수 있는 시간대
-
-# 예제 2번의 경우 6분에 교환됨
-# 아이가 타게 되는 놀이기구의 번호를 알아내야 함
-
-# 시간 T에 놀이기구 R에 탑승한 아이들의 수가 N일 때
-# N = T/R이다?
+# n = 아이들 수 m = 놀이기구 수
+# 3번 예제의 경우엔 8분에 모든 아이들이 탑승을 함
+# 일단 모든 아이들이 탑승하는 시간을 구하기 위해서 이분탐색을 진행함
 import sys
+
 input = sys.stdin.readline
-
-#n 아이들 수 , m 놀이기구 개수
 n,m = map(int, input().split())
-time = list(map(int, input().split()))
+arr = list(map(int, input().split()))
 
-if n < m:
+if n<m:
     print(n)
 else:
     start = 0
-    end = 60000000000
+    end = max(arr) * n
     result = 0
-
     while start <= end:
         mid = (start + end) // 2
         total = m
-
-        for t in time:
-            total += mid // t
+        for i in arr:
+            total += mid // i
         
         if total >= n:
             result = mid
             end = mid - 1
         else:
             start = mid + 1
-
-
+    
+    # 바로 직전시간까지 탑승한 아이들의 수
     cnt = m
     for i in range(m):
-        cnt += (result - 1) // time[i]
-
+        cnt += (result-1) // arr[i]
+    
     for i in range(m):
-        if result % time[i] == 0:
+        if result % arr[i] == 0:
             cnt += 1
         if cnt == n:
             print(i+1)
