@@ -1,5 +1,7 @@
 import sys
 
+# 하다보니 규칙이생겨서;;;;;;
+
 dp = [0] * 1001
 
 n = int(sys.stdin.readline())
