@@ -8,7 +8,7 @@
 
 # 왜 내 풀이가 메모리 시간 둘다 거의 두배차이인건가;;;;;;ㅠㅠㅠㅠㅠㅠㅠㅠㅠ
 
-# 내풀이
+# 내풀이    
 # 2차원 배열 활용
 import sys
 n = int(sys.stdin.readline())
@@ -44,5 +44,26 @@ for i in range(1, n+1):
     if finish > n:
         continue
     dp[finish] = max(dp[finish], dp[i-1] + p[i])
+
+print(max(dp))
+
+
+# 재풀이 드가자
+import sys
+n = int(sys.stdin.readline())
+dp = [0] * (n+1)
+t = [0]
+p = [0]
+for i in range(n):
+    a,b = map(int, sys.stdin.readline().split())
+    t.append(a)
+    p.append(b)
+
+for i in range(n):
+    dp[i] = max(dp[i], dp[i-1])
+    finish = i + t[i] - 1
+    if finish > n:
+        continue
+    dp[finish] = max(dp[i-1] + p[i], dp[finish])
 
 print(max(dp))
