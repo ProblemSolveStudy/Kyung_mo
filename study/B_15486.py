@@ -5,6 +5,28 @@
 # 5. 각 날짜를 할것인지 말것인지를 정해야 할듯함
 # arr [[a,b]] a : 날짜 b: 금액
 
+#     1. 만약 첫째날 일한다면?		 = 45 				
+# 일				    1	2		3		4	    5	 6		7
+# arr[i][0](상담일자)   3	5		1		1	    2	 4		2
+# arr[i][1](상담 일자) 10	20		10	    20	    15	 40		200
+# money(누적 돈)        0	0	    10	    30	    30	 45		45
+# 가능한 금액	        0	0	  0,10,10   20, 30		        20, 45 	
+# 											이거 두개는 일할 수가 없는 상태임	
+							
+							
+# 	2. 만약 둘째날 일한다면?						
+# 일	            1	2	3	4	5	6	7
+# t(상담)	        3	5	1	1	2	4	2
+# p(돈)         	10	20	10	20	15	40	200
+# money(누적 돈)	0	0	0	0	0	20	0
+# 	X	O					
+							
+							
+# 	3. 만약 셋째날 일한다면?						
+# 일	            1	2	3	4	5	6	7
+# t(상담)	        3	5	1	1	2	4	2
+# p(돈)         	10	20	10	20	15	40	200
+# money(누적 돈)	0	0	10	30	30	45	
 
 # 왜 내 풀이가 메모리 시간 둘다 거의 두배차이인건가;;;;;;ㅠㅠㅠㅠㅠㅠㅠㅠㅠ
 
@@ -47,23 +69,3 @@ for i in range(1, n+1):
 
 print(max(dp))
 
-
-# 재풀이 드가자
-import sys
-n = int(sys.stdin.readline())
-dp = [0] * (n+1)
-t = [0]
-p = [0]
-for i in range(n):
-    a,b = map(int, sys.stdin.readline().split())
-    t.append(a)
-    p.append(b)
-
-for i in range(1,n+1):
-    dp[i] = max(dp[i], dp[i-1])
-    finish = i + t[i] - 1
-    if finish > n:
-        continue
-    dp[finish] = max(dp[i-1] + p[i], dp[finish])
-
-print(max(dp))
