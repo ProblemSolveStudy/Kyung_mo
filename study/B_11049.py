@@ -4,16 +4,9 @@
 # 
 
 import sys
-input = sys.stdin.readline
 
-n = int(input())
-r = [0]
-c = [0]
-dp = [0] * (n+1)
-arr = [[0,0]]+[list(map(int, input().split())) for _ in range(n)]
+arr = [list(map(int, sys.stdin.readline().split())) for _ in range(int(sys.stdin.readline()))]
+dp = [0] * (len(arr) + 1)
 
-def arrMul(arr1, arr2):
-    return arr1[0] * arr2[1] * arr2[0]
-
-for i in range(1, n+1):
-    dp[i] = 
+for i in range(len(arr)):
+    
