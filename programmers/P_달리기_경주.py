@@ -10,3 +10,8 @@ def solution(players, callings):
         players[pre], players[post] = players[post], players[pre]
     answer = players
     return answer
+
+players = ["mumu", "soe", "poe", "kai", "mine"]
+callings = ["kai", "kai", "mine", "mine"]
+
+print(solution(players, callings))
