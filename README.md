@@ -1,4 +1,4 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=PS&fontSize=90" />
+ㅐㅊ<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=PS&fontSize=90" />
 
 
 <div align="center">
@@ -60,7 +60,7 @@
 | 덧칠하기 | 🙆‍♂️ |  |  |  |
 | 대충 만든 자판 | 🙆‍♂️ |  |  |  |
 | 카드 뭉치 | 🙆‍♂️ |  |  |  |
-| 둘만의 암호 | ❌ |  |  |  |
+| 둘만의 암호 | ❌ | 🙆‍♂️ |  |  |
 |  |  |  |  |  |
 | :---: | :---: | :---: | :---: | :---: |
 | Dynamic Programming |  |  |  |  |
