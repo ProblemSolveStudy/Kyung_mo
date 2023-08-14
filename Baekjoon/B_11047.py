@@ -1,17 +1,15 @@
 import sys
-
-n, k = map(int, sys.stdin.readline().split())
+n,k = map(int, sys.stdin.readline().split())
 
 coin = []
 
-for _ in range(n):
+for i in range(n):
     coin.append(int(sys.stdin.readline()))
 
 coin.reverse()
-
-cnt = 0
-
+result = 0
 for i in coin:
-    cnt += k // i
+    result += k // i
     k %= i
-print(cnt)
+
+print(result)
