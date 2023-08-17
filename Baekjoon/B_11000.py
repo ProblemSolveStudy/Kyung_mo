@@ -1,42 +1,45 @@
 # import sys
-# import heapq
 
 # n = int(sys.stdin.readline())
+# rooms = [list(map(int, sys.stdin.readline().split())) for _ in range(n)]
+# rooms.sort(key=lambda x: (x[0], x[1]))
 
-# roomList = [list(map(int, sys.stdin.readline().strip().split())) for _ in range(n)]
-
-# roomList.sort()
-
-# roomQueue = []
-# heapq.heappush(roomQueue, roomList[0][1]) # 끝나는 시간 확인하기
-
-# for i in range(1, n):
-#     if roomList[i][0] < roomQueue[0]:
-#         heapq.heappush(roomQueue, roomList[i][1])
+# room=[]
+# for start, end in rooms:
+#     if not room:
+#         room.append(end)
 #     else:
-#         heapq.heappop(roomQueue)
-#         heapq.heappush(roomQueue, roomList[i][1])
+#         allocated = False
+#         for i in range(len(room)):
+#             if room[i] <= start:
+#                 room[i] = end
+#                 allocated = True
+#                 break
+        
+#         if not allocated:
+#             room.append(end)
 
-# print(len(roomQueue))
+# print(len(room))
 
-import sys
-import heapq
-
+import heapq, sys
 input = sys.stdin.readline
 n = int(input())
 
-roomList = [list(map(int, input().rstrip().split())) for _ in range(n)]
+q = []
+for i in range(n):
+    start, end = map(int, input().split())
+    q.append([start, end])
 
-roomList.sort(key=lambda x:x[0])
+q.sort()
 
-roomQueue = []
-heapq.heappush(roomQueue, roomList[0][1])
+room = []
+heapq.heappush(room, q[0][1])
 
 for i in range(1, n):
-    if roomList[i][0] < roomQueue[0]:
-        heapq.heappush(roomQueue, roomList[i][1])
+    if q[i][0] < room[0]:
+        heapq.heappush(room, q[i][1])
     else:
-        heapq.heappop(roomQueue)
-        heapq.heappush(roomQueue, roomList[i][1])
+        heapq.heappop(room)
+        heapq.heappush(room, q[i][1])
 
-print(len(roomQueue))
+print(len(room))
