@@ -1,14 +1,17 @@
 import sys
 T = int(sys.stdin.readline())
-stock = list(map(int, sys.stdin.readline().split()))
+for _ in range(T):
 
-answer = 0
-max_value = 0
+    n = int(sys.stdin.readline())
+    stock = list(map(int, sys.stdin.readline().split()))
 
-for i in range(len(stock)-1, -1, -1):
-    if stock[i] > max_value:
-        max_value = stock[i]
-    else:
-        answer += max_value - stock[i]
+    answer = 0
+    max_value = 0
 
-print(answer)
+    for i in range(len(stock)-1, -1, -1):
+        if stock[i] > max_value:
+            max_value = stock[i]
+        else:
+            answer += max_value - stock[i]
+
+    print(answer)
