@@ -1,4 +1,4 @@
-ㅐㅊ<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=PS&fontSize=90" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=PS&fontSize=90" />
 
 
 <div align="center">
@@ -49,6 +49,12 @@
 
 <br/>
 <br/>
+
+| 문제번호 | 성공여부 | d+1 성공여부 | d+2 성공 여부 | 시간복잡도 |
+| :---: | :---: | :---: | :---: | :---: |
+|  |  |  |  |  |
+|  |  |  |  |  |
+
 
 <details>
 <summary>예전문제</summary>
