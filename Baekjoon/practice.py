@@ -357,3 +357,23 @@
 # while True:
 #     i += 1
 #     print(i,end='')
+
+
+item = ["First", "Second", "Third"]
+list = [1,2,3]
+hashmap = dict()
+for i in range(len(item)):
+    hashmap[item[i]] = list[i]
+
+print(hashmap)
+
+for i,val in enumerate(item):
+    print(i, val)
+
+# for i,val in enumerate(item):
+#     hashmap[val] = i
+# pre, post = hashmap["Second"] - 1, hashmap["Second"]
+# hashmap[item[pre]] = post
+# hashmap[item[post]] = pre
+# item[pre], item[post] = item[post], item[pre]
+# print(item)

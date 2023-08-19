@@ -5,7 +5,7 @@
 # 답지이해 불가 죄송 ㅠㅠㅠㅠ
 
 import sys
-
+INF = 2**32 - 1
 n = int(sys.stdin.readline())
 r = []
 c = []
@@ -21,7 +21,7 @@ def func(x,y):
         return dp[x][y]
     if y-x<=0:
         return 0
-    mm = 2**32 - 1
+    mm = INF
     for k in range(x, y):
         mm = min(mm, func(x,k) + func(k+1, y) + r[x] * c[k] * c[y])
     dp[x][y] = mm
