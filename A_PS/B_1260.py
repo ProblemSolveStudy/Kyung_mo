@@ -3,7 +3,6 @@ from collections import deque
 
 n,m,v = map(int, sys.stdin.readline().split())
 graph = [[] for _ in range(n+1)]
-visited = [False] * (n+1)
 
 for _ in range(m):
     a,b = map(int, sys.stdin.readline().split())
@@ -12,6 +11,8 @@ for _ in range(m):
 
 for i in range(len(graph)):
     graph[i].sort()
+
+visited = [False] * (n+1)
 
 def dfs(graph, v, visited):
     visited[v] = True
@@ -34,4 +35,4 @@ def bfs(graph, v, visited):
 dfs(graph, v, visited)
 print()
 visited = [False] * (n+1)
-bfs(graph, v, visited)
+bfs(graph,v,visited)
