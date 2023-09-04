@@ -1,7 +1,7 @@
 import sys
 from collections import deque
 def D(n):
-        return (2*n) % 10000, "D"
+    return (2*n) % 10000, "D"
 def S(n):
     return (n-1) % 10000, "S"
 def L(n):
