@@ -1,21 +1,23 @@
 import sys
-n,m = map(int, sys.stdin.readline().split())
-amount = [int(sys.stdin.readline()) for _ in range(n)]
+
+n,k = map(int, sys.stdin.readline().split())
+arr = [int(sys.stdin.readline()) for _ in range(n)]
 
 start = 1
-end = sum(amount)
+end = sum(arr)
 result = 0
 while (start <= end):
     cnt = 1
     mid = (start + end) // 2
     now = mid
-    for x in amount:
+
+    for x in arr:
         if now - x < 0:
             cnt += 1
             now = mid
         now -= x
     
-    if cnt > m or mid < max(amount):
+    if cnt > k or mid < max(arr):
         start = mid + 1
     else:
         result = mid
