@@ -1,7 +1,10 @@
-answer = 0
-elements = [7,9,1,1,4]
-cycle = elements + elements
-s = set()
-for i in range(len(elements)):
-    for j in range(len(elements)):
-        s.add(sum(cycle[i:i+j]))
+import heapq
+n,k,enemy = 2,	4	,[3, 3, 3, 3]
+def solution(n, k, enemy):
+    h = enemy[:k]
+    for i in range(k, len(enemy)):
+        n -= heapq.heappushpop(h, enemy[i])
+        if n < 0:
+            return i
+
+solution(n,k,enemy)
