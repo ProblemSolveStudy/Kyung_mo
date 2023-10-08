@@ -1,24 +1,30 @@
 from collections import deque
 def is_bracket(s):
     stack = []
-    for bracket in s:
-        if len(stack) == 0: stack.append(bracket)
+    
+    for i in s:
+        if len(stack) == 0:
+            stack.append(i)
         else:
-            if bracket == ']' and stack[-1] == '[':
+            if i == ')' and stack[-1] == '(':
                 stack.pop()
-            elif bracket == ')' and stack[-1] == '(':
+            elif i == '}' and stack[-1] == '{':
                 stack.pop()
-            elif bracket == '}' and stack[-1] == '{':
+            elif i == ']' and stack[-1] == '[':
                 stack.pop()
-            else: stack.append(bracket)
-    return 1 if len(stack) == 0 else 0
-
+            else:
+                stack.append(i)
+        
+    if len(stack) == 0:
+        return True
+    else:
+        return False
+    
 def solution(s):
     answer = 0
     s = deque(s)
-    for i in range(len(s)): # 5번 회전
+    
+    for i in range(len(s)):
         if is_bracket(s): answer += 1
         s.rotate(-1)
     return answer
-
-solution("}]()[{")
