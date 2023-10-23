@@ -1,3 +1,5 @@
+package javaPs;
+
 class Solution {
     int solution(int[][] land) {
         int answer = 0;

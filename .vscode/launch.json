@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "P_주식가격",
+            "request": "launch",
+            "mainClass": "P_주식가격",
+            "projectName": "python_4f2f9bb5"
+        },
+        {
+            "type": "java",
             "name": "P_주차요금계산",
             "request": "launch",
             "mainClass": "P_주차요금계산",
@@ -17,14 +24,6 @@
             "request": "launch",
             "mainClass": "Main",
             "projectName": "python_4f2f9bb5"
-        },
-        // {
-        //     "name": "Python: Current File",
-        //     "type": "python",
-        //     "request": "launch",
-        //     "program": "${file}",
-        //     "console": "integratedTerminal",
-        //     "justMyCode": true
-        // }
+        }
     ]
 }
