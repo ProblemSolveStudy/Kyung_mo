@@ -12,36 +12,37 @@ public class P_큰수만들기 {
     }
     class Solution {
         public String solution(String number, int k) {
-            String answer = "";
-            Queue<Integer> numQ = new LinkedList<>();
-            String[] numArr = number.split("");
-            Stack<Integer> st = new Stack<>();
+            StringBuilder answer = new StringBuilder();
 
-            for(String num : numArr) {
-                numQ.offer(Integer.valueOf(num));
+            Stack<Integer> st = new Stack<Integer>();
+
+            Queue<Integer> q = new LinkedList<>();
+
+            String[] temp = number.split("");
+
+            for(String num : temp) {
+                q.offer(Integer.valueOf(num));
             }
+            st.push(q.poll());
 
-            st.push(numQ.poll());
-            for(int i=1; i<numArr.length; i++) {
-                while (!st.isEmpty() && st.peek() < numQ.peek() && k > 0) {
+            for(int i=1; i<temp.length; i++) {
+                while(!st.isEmpty() && st.peek() < q.peek() && k>0) {
                     st.pop();
                     k--;
                 }
-                st.push(numQ.poll());
+                st.push(q.poll());
             }
 
-            while (k>0) {
+            while(k>0) {
                 st.pop();
                 k--;
             }
 
-
-            while (!numQ.isEmpty()) {
-                answer += (Integer.toString(numQ.poll()));
+            while(!st.isEmpty()) {
+                answer.append(Integer.toString(st.pop()));
             }
 
-
-            return answer;
+            return answer.reverse().toString();
         }
     }
 }

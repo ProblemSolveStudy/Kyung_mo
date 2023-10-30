@@ -3,6 +3,7 @@ package javaPs;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class P_연속된부분수열의합 {
     public static void main(String[] args) {
@@ -37,6 +38,7 @@ public class P_연속된부분수열의합 {
             if (sum == k) {
                 answerList.add(new int[]{start, end});
             }
+
         }
 
         // 정렬
