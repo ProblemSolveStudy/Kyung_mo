@@ -1,23 +1,20 @@
 package javaPs;
-import java.util.*;
 import java.io.*;
+import java.util.*;
 public class B_배수스위치 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
         String s = br.readLine();
         boolean[] arr = new boolean[s.length()+1];
-
         for (int i = 0; i < s.length(); i++) {
-            arr[i+1] = s.charAt(i)=='Y'; // 켜져있어야 true임
+            arr[i+1] = s.charAt(i) == 'Y';
         }
 
-        // 끄는 것이 목적이다.
-        int cnt=0;
+        int cnt= 0;
         for(int i=1; i<arr.length; i++) {
             if (!arr[i]) continue;
             cnt++;
-            for (int j = i; j < arr.length; j += i) {
+            for(int j=i; j<arr.length; j+=i) {
                 arr[j] = !arr[j];
             }
         }

@@ -3,27 +3,20 @@ package javaPs;
 public class P_124나라의숫자 {
 
     public static void main(String[] args) {
-        Solution solution = new P_124나라의숫자().new Solution();
-        solution.solution(12);
+        solution(3);
     }
-    class Solution {
-        public String solution(int n) {
-            String answer = "";
-            String[] numbers = {"4", "1", "2"};
+    public static String solution(int n) {
+        String answer = "";
+        String[] arr = {"4", "1", "2"};
 
-            int num = n;
+        while(n > 0) {
+            int remainder = n%3;
+            n /= 3;
 
-            while (num > 0) {
-                int remainder = num % 3;
-                num /= 3;
+            if (remainder % 3 == 0) n--;
 
-                if (remainder == 0) num--;
-
-                answer = numbers[remainder] + answer;
-            }
-
-
-            return answer;
+            answer = arr[remainder] + answer;
         }
+        return answer;
     }
 }
