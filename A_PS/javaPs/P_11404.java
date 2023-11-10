@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class P_11404 {
-    static final int INF = 987654321;
+    static final long INF = Integer.MAX_VALUE;
     int a = Integer.MAX_VALUE;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -16,7 +16,7 @@ public class P_11404 {
         int n = Integer.parseInt(br.readLine());
         int m = Integer.parseInt(br.readLine());
 
-        int[][] graph = new int[n+1][n+1];
+        long[][] graph = new long[n+1][n+1];
         for (int i=1; i<=n; i++) {
             for(int j=1; j<=n; j++) {
                 if (i == j) {
