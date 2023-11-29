@@ -4,93 +4,53 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
+import java.util.*;
 
+/**
+ * 순열 구한 후 순열에서 가장 최대값을 가지도록 구함
+ */
 public class B_10819 {
-//    static int[] nums;
-//    static boolean[] visited;
-//    static int[] selected;
-//    static int n;
-//    static int result = Integer.MIN_VALUE;
-//    public static void main(String[] args) throws IOException {
-//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//
-//        n = Integer.parseInt(br.readLine());
-//
-//        String[] temp = br.readLine().split(" ");
-//
-//        nums = new int[n];
-//        visited = new boolean[n];
-//        selected = new int[n];
-//
-//        for (int i = 0; i < temp.length; i++) {
-//            nums[i] = Integer.parseInt(temp[i]);
-//        }
-//        dfs(0);
-//        System.out.println(result);
-//    }
-//    public static void dfs(int count) {
-//        if(count == n) {
-//            result = Math.max(getResult(), result);
-//        }
-//        for(int i=0; i<n; i++) {
-//            if (!visited[i]) {
-//                visited[i] = true;
-//                selected[count] = nums[i];
-//                dfs(count + 1);
-//                visited[i] = false;
-//            }
-//        }
-//    }
-//    public static int getResult() {
-//        int sum = 0;
-//        for(int i=1; i<n; i++) {
-//            sum += Math.abs(selected[i] - selected[i - 1]);
-//        }
-//        return sum;
-//    }
-
+    static int max = Integer.MIN_VALUE;
     static int n;
     static int[] nums;
     static boolean[] visited;
-    static int[] selected;
-    static int result;
+    static int[] selectedNums;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         n = Integer.parseInt(br.readLine());
-        StringTokenizer st = new StringTokenizer(br.readLine());
         nums = new int[n];
         visited = new boolean[n];
-        selected = new int[n];
-        result = Integer.MIN_VALUE;
-        for(int i=0; i<n; i++) {
+        selectedNums = new int[n];
+
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < n; i++) {
             nums[i] = Integer.parseInt(st.nextToken());
         }
-
         dfs(0);
-        System.out.println(result);
-
+        System.out.println(max);
     }
-    public static void dfs(int count) {
-        if(count == n) {
-            result = Math.max(result, getResult());
+
+    static void dfs(int cnt) {
+        if (cnt == n) {
+            max = Math.max(getResult(), max);
             return;
         }
 
-        for(int i=0; i<n; i++) {
+        for (int i = 0; i < n; i++) {
             if (!visited[i]) {
                 visited[i] = true;
-                selected[count] = nums[i];
-                dfs(count+1);
-                visited[i]= false;
+                selectedNums[cnt] = nums[i];
+                dfs(cnt+1);
+                visited[i] = false;
             }
         }
     }
 
-    public static int getResult() {
+    private static int getResult() {
         int sum = 0;
-        for(int i=1; i<n; i++) {
-            sum += Math.abs(selected[i] - selected[i-1]);
+        for (int i = 1; i < n; i++) {
+            sum += Math.abs(selectedNums[i] - selectedNums[i-1]);
         }
         return sum;
     }
