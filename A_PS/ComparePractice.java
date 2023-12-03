@@ -1,17 +1,22 @@
-import java.util.Arrays;
-import java.util.Comparator;
+import java.util.*;
+import java.io.*;
 
-public class ComparePractice {
-    public static void main(String[] args) {
-        int[][] arrays = { { 0, 3 }, { 2, 6 }, { 1, 9 }, { 1, 8 } };
 
-        Arrays.sort(arrays, new Comparator<int[]>() {
-            public int compare(int[] o1, int[] o2) {
-                if (o1[0] == o2[0]) return  o2[1]-o1[1];
-                else return o2[0]-o1[0];
+public class ComparePractice
+{
+    public static void main(String args[]) throws IOException
+    {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        String str = br.readLine();
+        StringBuilder sb = new StringBuilder();
+
+        for (char c : str.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                sb.append(c);
             }
-        });
+        }
 
-        System.out.println(Arrays.deepToString(arrays));
+        System.out.println(sb);
     }
 }
