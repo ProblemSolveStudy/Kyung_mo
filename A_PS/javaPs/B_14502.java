@@ -3,9 +3,10 @@ import java.util.*;
 import java.io.*;
 
 public class B_14502 {
-    static int n,m;
+    static int n, m;
     static int max = Integer.MIN_VALUE;
     static int[][] graph;
+    static boolean[][] visited;
     static int[][] virusMap;
     static int[] dx = {-1, 1, 0, 0};
     static int[] dy = {0, 0, -1, 1};
@@ -13,19 +14,22 @@ public class B_14502 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         StringTokenizer st = new StringTokenizer(br.readLine());
+
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
 
         graph = new int[n][m];
+        visited = new boolean[n][m];
+
         for (int i = 0; i < n; i++) {
             st = new StringTokenizer(br.readLine());
             for (int j = 0; j < m; j++) {
                 graph[i][j] = Integer.parseInt(st.nextToken());
             }
         }
+
         dfs(0);
         System.out.println(max);
-
     }
 
     static void dfs(int depth) {
@@ -33,12 +37,11 @@ public class B_14502 {
             bfs();
             return;
         }
-
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 if (graph[i][j] == 0) {
                     graph[i][j] = 1;
-                    dfs(depth + 1);
+                    dfs(depth+1);
                     graph[i][j] = 0;
                 }
             }
@@ -57,7 +60,7 @@ public class B_14502 {
             }
         }
 
-        int cnt = 0;
+        int cnt=0;
         while (!q.isEmpty()) {
             int[] temp = q.poll();
             int x = temp[0];
@@ -67,17 +70,21 @@ public class B_14502 {
                 int nx = x + dx[i];
                 int ny = y + dy[i];
 
-                if (0 <= nx && nx < n && 0 <= ny && ny < m && virusMap[nx][ny] == 0) {
-                    virusMap[nx][ny] = 2;
+                if (0 <= nx && nx < n && 0 <= ny && ny < m && !visited[nx][ny] && virusMap[nx][ny] == 0) {
+                    virusMap[nx][ny] = 1;
                     q.add(new int[]{nx, ny});
                 }
             }
         }
+
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if(virusMap[i][j] == 0) cnt++;
+                if (virusMap[i][j] == 0) {
+                    cnt++;
+                }
             }
         }
-        max = Math.max(cnt, max);
+
+        max = Math.max(max, cnt);
     }
 }

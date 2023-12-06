@@ -8,15 +8,7 @@ public class ComparePractice
     {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        String str = br.readLine();
-        StringBuilder sb = new StringBuilder();
+        System.out.println(Integer.compare(5, 3));
 
-        for (char c : str.toCharArray()) {
-            if (Character.isUpperCase(c)) {
-                sb.append(c);
-            }
-        }
-
-        System.out.println(sb);
     }
 }
