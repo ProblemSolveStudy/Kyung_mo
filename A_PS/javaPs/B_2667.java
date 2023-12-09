@@ -1,16 +1,89 @@
 package javaPs;
+//
+//import java.io.BufferedReader;
+//import java.io.IOException;
+//import java.io.InputStreamReader;
+//import java.util.*;
+//public class B_2667 {
+//    static int n;
+//    static List<Integer> nums = new ArrayList<>();
+//    static int[][] graph;
+//    static boolean[][] visited;
+//    static int[] dx = {-1, 1, 0, 0};
+//    static int[] dy = {0, 0, -1, 1};
+//    public static void main(String[] args) throws IOException {
+//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//
+//        n = Integer.parseInt(br.readLine());
+//        graph = new int[n][n];
+//        visited = new boolean[n][n];
+//
+//        for (int i = 0; i < n; i++) {
+//            String temp = br.readLine();
+//            for (int j = 0; j < n; j++) {
+//                graph[i][j] = Integer.parseInt(String.valueOf(temp.charAt(j)));
+//            }
+//        }
+//
+//        for (int i = 0; i < n; i++) {
+//            for (int j = 0; j < n; j++) {
+//                if (graph[i][j] == 1) {
+//                    bfs(new int[]{i, j});
+//                }
+//            }
+//        }
+//
+//        System.out.println(nums.size());
+//        Collections.sort(nums);
+//        for (int i = 0; i < nums.size(); i++) {
+//            System.out.println(nums.get(i));
+//        }
+//    }
+//
+//    static void bfs(int[] start) {
+//        Queue<int[]> q = new LinkedList<>();
+//        q.add(start);
+//        int cnt=0;
+//
+//        while (!q.isEmpty()) {
+//            int[] temp = q.poll();
+//            int x = temp[0];
+//            int y = temp[1];
+//            visited[x][y] = true;
+//            cnt++;
+//
+//            for (int i = 0; i < 4; i++) {
+//                int nx = x + dx[i];
+//                int ny = y + dy[i];
+//
+//                if (0 <= nx && nx < n && 0 <= ny && ny < n && !visited[nx][ny] && graph[nx][ny] == 1) {
+//                    visited[nx][ny] = true;
+//                    q.add(new int[]{nx, ny});
+//                    graph[nx][ny] = 0;
+//                }
+//            }
+//
+//        }
+//        nums.add(cnt);
+//    }
+//}
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.StringTokenizer;
+
 public class B_2667 {
     static int n;
-    static List<Integer> nums = new ArrayList<>();
     static int[][] graph;
     static boolean[][] visited;
+    static ArrayList<Integer> result;
     static int[] dx = {-1, 1, 0, 0};
     static int[] dy = {0, 0, -1, 1};
+    static int cnt = 1;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -25,45 +98,39 @@ public class B_2667 {
             }
         }
 
+        List<Integer> list = new ArrayList<>();
+
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                if (graph[i][j] == 1) {
-                    bfs(new int[]{i, j});
+                if (graph[i][j] == 1 && !visited[i][j]) {
+                    cnt=0;
+                    dfs(new int[]{i, j});
+                    list.add(cnt);
                 }
             }
         }
 
-        System.out.println(nums.size());
-        Collections.sort(nums);
-        for (int i = 0; i < nums.size(); i++) {
-            System.out.println(nums.get(i));
+        Collections.sort(list);
+        System.out.println(list.size());
+        for (int i : list) {
+            System.out.println(i);
         }
     }
 
-    static void bfs(int[] start) {
-        Queue<int[]> q = new LinkedList<>();
-        q.add(start);
-        int cnt=0;
+    static void dfs(int[] start) {
+        int x = start[0];
+        int y = start[1];
 
-        while (!q.isEmpty()) {
-            int[] temp = q.poll();
-            int x = temp[0];
-            int y = temp[1];
-            visited[x][y] = true;
-            cnt++;
+        visited[x][y] = true;
+        cnt++;
 
-            for (int i = 0; i < 4; i++) {
-                int nx = x + dx[i];
-                int ny = y + dy[i];
+        for (int i = 0; i < 4; i++) {
+            int nx = x+dx[i];
+            int ny = y+dy[i];
 
-                if (0 <= nx && nx < n && 0 <= ny && ny < n && !visited[nx][ny] && graph[nx][ny] == 1) {
-                    visited[nx][ny] = true;
-                    q.add(new int[]{nx, ny});
-                    graph[nx][ny] = 0;
-                }
+            if (0 <= nx && nx < n && 0 <= ny && ny < n && !visited[nx][ny] && graph[nx][ny] == 1) {
+                dfs(new int[]{nx, ny});
             }
-
         }
-        nums.add(cnt);
     }
 }

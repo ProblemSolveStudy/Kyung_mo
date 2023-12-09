@@ -13,13 +13,7 @@ public class B_2661 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         n = Integer.parseInt(br.readLine());
-
-        /**
-         * 1,2,3 으로 이뤄진 수열을 하나씩 찾아가며 중복되는지 안되는지 알아내야 한다.
-         * 그렇기 때문에 백트래킹을 활용하도록 하자
-         */
-
-        dfs("");
+        dfs(result);
     }
 
     static void dfs(String str) {
@@ -28,22 +22,23 @@ public class B_2661 {
             System.exit(0);
         }
 
-        for (int i = START; i <= END; i++) {
-            if(checkNum(str + i)) {
+        for (int i = 1; i <= 3; i++) {
+            if (checkNum(str + i)) {
                 dfs(str + i);
             }
         }
     }
 
     static boolean checkNum(String str) {
-        for (int i = 1; i <= str.length()/2; i++) {
-            String front = str.substring(str.length() - i - i, str.length() - i);
+        for (int i = 1; i <= str.length() / 2; i++) {
             String rear = str.substring(str.length() - i, str.length());
+            String front = str.substring(str.length() - i - i, str.length() - i);
 
-            if (front.equals(rear)) {
+            if (rear.equals(front)) {
                 return false;
             }
         }
         return true;
     }
+
 }
