@@ -73,24 +73,21 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
-import java.util.StringTokenizer;
 
 public class B_2667 {
     static int n;
+    static int cnt;
     static int[][] graph;
     static boolean[][] visited;
-    static ArrayList<Integer> result;
+    static ArrayList<Integer> list = new ArrayList<>();
     static int[] dx = {-1, 1, 0, 0};
     static int[] dy = {0, 0, -1, 1};
-    static int cnt = 1;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         n = Integer.parseInt(br.readLine());
-        graph = new int[n][n];
         visited = new boolean[n][n];
-
+        graph = new int[n][n];
         for (int i = 0; i < n; i++) {
             String temp = br.readLine();
             for (int j = 0; j < n; j++) {
@@ -98,38 +95,31 @@ public class B_2667 {
             }
         }
 
-        List<Integer> list = new ArrayList<>();
-
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (graph[i][j] == 1 && !visited[i][j]) {
-                    cnt=0;
-                    dfs(new int[]{i, j});
+                    cnt = 0;
+                    dfs(i,j);
                     list.add(cnt);
                 }
             }
         }
-
-        Collections.sort(list);
         System.out.println(list.size());
+        Collections.sort(list);
         for (int i : list) {
             System.out.println(i);
         }
     }
 
-    static void dfs(int[] start) {
-        int x = start[0];
-        int y = start[1];
-
+    static void dfs(int x, int y) {
         visited[x][y] = true;
         cnt++;
-
         for (int i = 0; i < 4; i++) {
-            int nx = x+dx[i];
-            int ny = y+dy[i];
+            int nx = x + dx[i];
+            int ny = y + dy[i];
 
             if (0 <= nx && nx < n && 0 <= ny && ny < n && !visited[nx][ny] && graph[nx][ny] == 1) {
-                dfs(new int[]{nx, ny});
+                dfs(nx, ny);
             }
         }
     }
