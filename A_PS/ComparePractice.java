@@ -8,7 +8,11 @@ public class ComparePractice
     {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        System.out.println(Integer.compare(5, 3));
+        String temp = br.readLine();
+
+        for (int i = 0; i < temp.length(); i++) {
+            System.out.println(temp.charAt(i) - 'A');
+        }
 
     }
 }

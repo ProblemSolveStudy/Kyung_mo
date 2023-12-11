@@ -10,14 +10,11 @@ public class B_2468 {
     static int MAX = Integer.MIN_VALUE;
     static int[][] graph;
     static boolean[][] visited;
-    static int cnt = 0;
     static int[] dx = {-1, 1, 0, 0};
     static int[] dy = {0, 0, -1, 1};
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
         n = Integer.parseInt(br.readLine());
-
         graph = new int[n][n];
         for (int i = 0; i < n; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
@@ -29,21 +26,21 @@ public class B_2468 {
             }
         }
 
-        int max = 0;
-        for (int height = 0; height < MAX + 1; height++) {
+        int maxArea = 0;
+        for (int k = 1; k <= MAX; k++) {
             visited = new boolean[n][n];
-            int cnt = 0;
+            int cnt=0;
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
-                    if (graph[i][j] > height && !visited[i][j]) {
-                        dfs(i, j, height);
+                    if (graph[i][j] > k && !visited[i][j]) {
+                        dfs(i,j, k);
                         cnt++;
                     }
                 }
             }
-            max = Math.max(cnt, max);
+            maxArea = Math.max(maxArea, cnt);
         }
-        System.out.println(max);
+        System.out.println(maxArea);
     }
 
     static void dfs(int x, int y, int height) {
