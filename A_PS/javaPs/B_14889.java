@@ -3,12 +3,11 @@ package javaPs;
 import java.util.*;
 import java.io.*;
 
-public class P_14889 {
-    static int[][] graph;
+public class B_14889 {
     static int n;
+    static int[][] graph;
     static boolean[] visited;
     static int min = Integer.MAX_VALUE;
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -22,26 +21,28 @@ public class P_14889 {
                 graph[i][j] = Integer.parseInt(st.nextToken());
             }
         }
-        dfs(0, 0);
+
+        backTracking(0, 0);
         System.out.println(min);
+
     }
 
-    public static void dfs(int idx, int depth) {
-        if (depth == n / 2) {
+    private static void backTracking(int idx, int depth) {
+        if (depth == n/2) {
             getResult();
             return;
         }
 
-        for(int i=idx; i<n; i++) {
+        for (int i = idx; i < n; i++) {
             if (!visited[i]) {
                 visited[i] = true;
-                dfs(i + 1, depth + 1);
+                backTracking(i + 1, depth + 1);
                 visited[i] = false;
             }
         }
     }
 
-    public static void getResult() {
+    private static void getResult() {
         int start = 0;
         int link = 0;
 
@@ -55,7 +56,6 @@ public class P_14889 {
             }
         }
 
-        int temp = Math.abs(start - link);
-        min = Math.min(min, temp);
+        min = Math.min(min, Math.abs(start - link));
     }
 }
