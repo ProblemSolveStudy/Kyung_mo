@@ -3,24 +3,23 @@ package javaPs;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.nio.Buffer;
 import java.util.*;
 
-public class P_16236 {
+public class B_16236 {
     static int n;
-    static int[][] graph;
-
-    // 상좌하우
+    static int graph[][];
     static int[] dx = {-1, 1, 0, 0};
     static int[] dy = {0, 0, -1, 1};
+    static int[] now;
+    static int size;
+    static int eat;
+    static int move;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int n = Integer.parseInt(br.readLine());
-
+        n = Integer.parseInt(br.readLine());
         graph = new int[n][n];
-        int[] cur = null;
 
         for (int i = 0; i < n; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
@@ -28,34 +27,30 @@ public class P_16236 {
                 graph[i][j] = Integer.parseInt(st.nextToken());
                 if (graph[i][j] == 9) {
                     graph[i][j] = 0;
-                    cur = new int[]{i, j};
+                    now = new int[]{i, j};
                 }
             }
         }
-
-        int size = 2;
-        int eat = 0;
-        int move = 0;
+        size = 2;
+        eat = 0;
+        move = 0;
 
         while (true) {
             PriorityQueue<int[]> q = new PriorityQueue<>((o1, o2) ->
                     o1[2] != o2[2] ? Integer.compare(o1[2], o2[2]) : (o1[0] != o2[0] ? Integer.compare(o1[0], o2[0]) : Integer.compare(o1[1], o2[1])));
 
             boolean[][] visited = new boolean[n][n];
-
-            q.add(new int[]{cur[0], cur[1], 0}); // x, y, 이동한 거리
-
-            visited[cur[0]][cur[1]] = true;
-
             boolean ck = false;
+            q.add(new int[]{now[0], now[1], 0});
+            visited[now[0]][now[1]] = true;
 
             while (!q.isEmpty()) {
-                cur = q.poll();
-                int x = cur[0];
-                int y = cur[1];
-                int sharkMove = cur[2];
+                now = q.poll();
+                int x = now[0];
+                int y = now[1];
+                int sharkMove = now[2];
 
-                if (graph[x][y] != 0 && graph[x][y] < size) {
+                if(graph[x][y] != 0 && graph[x][y] < size) {
                     graph[x][y] = 0;
                     eat++;
                     move += sharkMove;
@@ -73,11 +68,10 @@ public class P_16236 {
                     }
                 }
             }
-            if (size == eat) {
+            if(eat==size) {
                 size++;
                 eat=0;
             }
-
             if(!ck) break;
         }
         System.out.println(move);
