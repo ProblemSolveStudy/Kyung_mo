@@ -1,16 +1,15 @@
 package javaPs;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Arrays;
+import java.io.*;
+import java.util.*;
 
 public class B_10026 {
     static int n;
     static String[][] graph;
-    static String[][] colorGraph;
+    static String[][] abnormalGraph;
     static boolean[][] visited;
-    static boolean[][] cVisited;
+    static boolean[][] abnormalVisited;
     static int[] dx = {-1, 1, 0, 0};
     static int[] dy = {0, 0, -1, 1};
     public static void main(String[] args) throws IOException {
@@ -19,51 +18,52 @@ public class B_10026 {
         n = Integer.parseInt(br.readLine());
 
         graph = new String[n][n];
-        colorGraph = new String[n][n];
+        abnormalGraph = new String[n][n];
+
         visited = new boolean[n][n];
-        cVisited = new boolean[n][n];
+        abnormalVisited = new boolean[n][n];
 
         for (int i = 0; i < n; i++) {
             String temp = br.readLine();
             for (int j = 0; j < n; j++) {
-                graph[i][j] = String.valueOf(temp.charAt(j));
-
-                colorGraph[i][j] = String.valueOf(temp.charAt(j));
-                if (String.valueOf(temp.charAt(j)).equals("G")) {
-                    colorGraph[i][j] = "R";
+                String s = String.valueOf(temp.charAt(j));
+                graph[i][j] = s;
+                abnormalGraph[i][j] = s;
+                if (s.equals("R")) {
+                    abnormalGraph[i][j] = "G";
                 }
             }
         }
 
         int normalCnt = 0;
-        int colorCnt = 0;
+        int abnormalCnt = 0;
+
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                String normalNow = graph[i][j];
-                String colorNow = colorGraph[i][j];
-                if (normalNow.equals(graph[i][j]) && !visited[i][j]) {
-                    dfs(i, j, normalNow, graph, visited);
+                String normalColor = graph[i][j];
+                String abnormalColor = abnormalGraph[i][j];
+
+                if (normalColor.equals(graph[i][j]) && !visited[i][j]) {
+                    dfs(graph, visited, new int[]{i, j});
                     normalCnt++;
                 }
-                if (colorNow.equals(colorGraph[i][j]) && !cVisited[i][j]) {
-                    dfs(i, j, colorNow, colorGraph, cVisited);
-                    colorCnt++;
+                if (abnormalColor.equals(abnormalGraph[i][j]) && !abnormalVisited[i][j]) {
+                    dfs(abnormalGraph, abnormalVisited, new int[]{i, j});
+                    abnormalCnt++;
                 }
-
             }
         }
-        System.out.print(normalCnt + " ");
-        System.out.println(colorCnt);
+        System.out.println(normalCnt + " " + abnormalCnt);
     }
+    static void dfs(String[][] graph, boolean[][] visited, int[] start) {
+        visited[start[0]][start[1]] = true;
 
-    static void dfs(int x, int y, String color, String[][] graph, boolean[][] visited) {
-        visited[x][y] = true;
         for (int i = 0; i < 4; i++) {
-            int nx = x + dx[i];
-            int ny = y + dy[i];
+            int nx = start[0] + dx[i];
+            int ny = start[1] + dy[i];
 
-            if (0 <= nx && nx < n && 0 <= ny && ny < n && !visited[nx][ny] && graph[nx][ny].equals(color)) {
-                dfs(nx, ny, color, graph, visited);
+            if (0 <= nx && nx < n && 0 <= ny && ny < n && !visited[nx][ny] && graph[nx][ny].equals(graph[start[0]][start[1]])) {
+                dfs(graph, visited, new int[]{nx, ny});
             }
         }
     }
