@@ -5,46 +5,41 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class P_12865 {
-    static int n,k;
-    static int dp[][], w[], v[];
+public class B_12865 {
+    static int n, k;
+    static int[] weight;
+    static int[] value;
+    static int[][] dp;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
         StringTokenizer st = new StringTokenizer(br.readLine());
+
         n = Integer.parseInt(st.nextToken());
         k = Integer.parseInt(st.nextToken());
 
-        dp = new int[n+1][k+1];
+        weight = new int[n+1];
+        value = new int[n+1];
 
-        w = new int[n + 1];
-        v = new int[n + 1];
+        dp = new int[n+1][k+1];
 
         for (int i = 1; i <= n; i++) {
             st = new StringTokenizer(br.readLine());
-            w[i] = Integer.parseInt(st.nextToken());
-            v[i] = Integer.parseInt(st.nextToken());
+            weight[i] = Integer.parseInt(st.nextToken());
+            value[i] = Integer.parseInt(st.nextToken());
         }
 
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= k; j++) {
-                if (j - w[i] >= 0) {
-                    dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - w[i] + v[i]]);
+                dp[i][j] = dp[i-1][j];
+                if (j - weight[i] >= 0) {
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i]);
                 }
             }
         }
 
         System.out.println(dp[n][k]);
+
+
     }
 }
-
-/**
- * W    A   B   C   D
- * 0    0   0   0   0
- * 1    0   0   0   0
- * 2    0   0   0   0
- * 3    0   0   6   6
- * 4    0   8   8   8
- * 5    0   0   0   12
- * 6    13  13  13  13
- * 7    13   0   14  14
- */
