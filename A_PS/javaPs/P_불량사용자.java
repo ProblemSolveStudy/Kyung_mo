@@ -3,6 +3,9 @@ package javaPs;
 import java.util.*;
 public class P_불량사용자 {
     public static void main(String[] args) {
+        Solution solution = new P_불량사용자().new Solution();
+
+        System.out.println(solution.solution(new String[]{"frodo", "fradi", "crodo", "abc123", "frodoc"}, new String[]{"fr*d*", "abc1**"}));
 
     }
 
@@ -11,8 +14,6 @@ public class P_불량사용자 {
         static HashSet<HashSet<String>> result = new HashSet<>();
         public int solution(String[] user_id, String[] banned_id) {
             int answer = 0;
-
-
             dfs(new HashSet<String>(), 0, user_id, banned_id);
 
             return result.size();
