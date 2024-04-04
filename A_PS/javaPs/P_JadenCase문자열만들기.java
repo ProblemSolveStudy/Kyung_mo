@@ -10,7 +10,7 @@ public class P_JadenCase문자열만들기 {
             StringTokenizer st = new StringTokenizer(s, " ", true);
             List<String> str = new ArrayList<>();
 
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb =   new StringBuilder();
             while(st.hasMoreTokens()) {
                 String word = st.nextToken();
 
