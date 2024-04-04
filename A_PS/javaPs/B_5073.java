@@ -49,6 +49,7 @@ public class B_5073 {
             System.out.println("Equilateral");
         } else {
             System.out.println("Isosceles");
+
         }
     }
 
