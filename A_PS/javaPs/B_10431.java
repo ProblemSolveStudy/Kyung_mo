@@ -53,15 +53,33 @@ public class B_10431 {
         int T = Integer.parseInt(br.readLine());
 
         for(int i=0; i<T; i++) {
+
+
             StringTokenizer st = new StringTokenizer(br.readLine());
             int testCaseNum = Integer.parseInt(st.nextToken());
-            List<Integer> list = new ArrayList<Integer>();
+            List<Integer> list = new ArrayList<>();
+            List<Integer> line = new ArrayList<>();
 
             for (int j = 0; j < 20; j++) {
                 list.add(Integer.valueOf(st.nextToken()));
             }
 
-
+            int cnt = smaller(list);
+            System.out.println(testCaseNum + " " + cnt);
         }
+    }
+
+    static int smaller(List<Integer> list) {
+
+        int cnt=0;
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = i + 1; j < list.size(); j++) {
+                if (list.get(i) > list.get(j)) {
+                    cnt++;
+                }
+            }
+        }
+
+        return cnt;
     }
 }
